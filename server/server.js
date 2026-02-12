@@ -11,7 +11,7 @@ const app = express();
 app.use(cors());
 
 // middleware
-app.use(express.json);
+app.use(express.json());
 app.use(clerkMiddleware());
 
 // API to listen to Clerk Webhooks
