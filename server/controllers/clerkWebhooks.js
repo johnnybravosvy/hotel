@@ -19,21 +19,10 @@ const clerkWebhooks = async (req, res) => {
     // Getting Data from request body
     const { data, type } = req.body;
 
-    // ✅ SAFE EMAIL EXTRACTION
-    const email =
-      data.email_addresses?.[0]?.email_address ||
-      data.email_address?.[0]?.email_address ||
-      data.email ||
-      null;
-
-    // ✅ SAFE USERNAME CONCATENATION
-    const username =
-      [data.first_name, data.last_name].filter(Boolean).join(" ") || "User";
-
     const userData = {
       _id: data.id,
-      email: email,
-      username: username,
+      email: data.email_addresses[0].email_address,
+      username: data.first_name + " " + data.last_name,
       image: data.image_url,
     };
     // Switch Cases for different Events
