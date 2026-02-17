@@ -15,7 +15,7 @@ const Newsletter = () => {
           className="bg-white/10 px-4 py-2.5 border border-white/20 rounded outline-none max-w-66 w-full"
           placeholder="Enter your email"
         />
-        <button class="flex items-center justify-center gap-2 group bg-black px-4 md:px-7 py-2.5 rounded active:scale-95 transition-all">
+        <button className="flex items-center justify-center gap-2 group bg-black px-4 md:px-7 py-2.5 rounded active:scale-95 transition-all">
           Subscribe
           <img
             src={assets.arrowIcon}
@@ -24,7 +24,7 @@ const Newsletter = () => {
           />
         </button>
       </div>
-      <p class="text-gray-500 mt-6 text-xs text-center">
+      <p className="text-gray-500 mt-6 text-xs text-center">
         By subscribing, you agree to our Privacy Policy and consent to receive
         updates.
       </p>
