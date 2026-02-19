@@ -35,7 +35,7 @@ app.get("/", (req, res) => res.send("Server is Working"));
 app.use("/api/user", userRouter);
 app.use("/api/hotels", hotelRouter);
 app.use("/api/rooms", roomRouter);
-app.use("/api/booking", bookingRouter);
+app.use("/api/bookings", bookingRouter);
 
 const PORT = process.env.PORT || 3000;
 
