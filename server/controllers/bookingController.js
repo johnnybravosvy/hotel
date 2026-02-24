@@ -16,6 +16,7 @@ const checkAvailability = async ({ checkInDate, checkOutDate, room }) => {
     return isAvailable;
   } catch (error) {
     console.error(error.message);
+    return false;
   }
 };
 
@@ -51,7 +52,9 @@ export const createBooking = async (req, res) => {
     });
 
     if (!isAvailable) {
-      return res.json({ success: false, message: "Room is nt available" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Room is not available" });
     }
     // Get total price for Room
     const roomData = await Room.findById(room).populate("hotel");
@@ -74,7 +77,7 @@ export const createBooking = async (req, res) => {
       totalPrice,
     });
 
-    const malOptions = {
+    const mailOptions = {
       from: process.env.SENDER_EMAIL,
       to: req.user.email,
       subject: "Hotel Booking Details",
@@ -94,7 +97,7 @@ export const createBooking = async (req, res) => {
       `,
     };
 
-    await transporter.sendMail();
+    await transporter.sendMail(mailOptions);
 
     res.json({ success: true, message: "Booking created successfully" });
   } catch (error) {
